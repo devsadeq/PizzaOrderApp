@@ -56,7 +56,7 @@ private fun OrderScreenContent(
             .padding(paddingValues),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        PizzaPager(pizzaList = state.pizzaList)
+        PizzaPager(pizzaList = state.pizzaList, pizzaSize = state.selectedSize)
         PizzaPrice(price = state.totalPrice)
         PizzaSizeSelection(selectedSize = state.selectedSize, onClick = onPizzaSizeClicked)
         PizzaIngredients(ingredients = state.ingredients, onIngredientClicked = onIngredientClicked)

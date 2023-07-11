@@ -14,11 +14,13 @@ import androidx.compose.ui.unit.dp
 import com.devsadeq.pizzaorderapp.R
 import com.devsadeq.pizzaorderapp.pizzaList
 import com.devsadeq.pizzaorderapp.viewmodel.OrderScreenUiState
+import com.devsadeq.pizzaorderapp.viewmodel.PizzaSize
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PizzaPager(
     pizzaList: List<OrderScreenUiState.Pizza>,
+    pizzaSize: PizzaSize,
     modifier: Modifier = Modifier,
 ) {
     Box(modifier = modifier.padding(vertical = 24.dp)) {
@@ -31,7 +33,8 @@ fun PizzaPager(
                 imageRes = pizzaList[it].breadRes,
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .size(260.dp)
+                    .size(250.dp),
+                pizzaSize = pizzaSize
             )
         }
     }
@@ -40,5 +43,5 @@ fun PizzaPager(
 @Preview(showBackground = true)
 @Composable
 private fun PizzaPagerPreview() {
-    PizzaPager(pizzaList = pizzaList)
+    PizzaPager(pizzaList = pizzaList, pizzaSize = PizzaSize.SMALL)
 }
