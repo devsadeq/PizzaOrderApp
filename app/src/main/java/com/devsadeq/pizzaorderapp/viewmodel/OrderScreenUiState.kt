@@ -1,5 +1,7 @@
 package com.devsadeq.pizzaorderapp.viewmodel
 
+import com.devsadeq.pizzaorderapp.DataSource
+
 data class OrderScreenUiState(
     val pizzaList: List<Pizza> = emptyList(),
     val ingredients: List<Ingredient> = emptyList(),
@@ -7,6 +9,12 @@ data class OrderScreenUiState(
     val selectedIngredients: List<Ingredient> = emptyList(),
     val totalPrice: Double = 10.0,
     val isFavorite: Boolean = false,
+    val selectedPizza: Int = 1,
+    val basilImages: List<Int> = DataSource.basilImages,
+    val broccoliImages: List<Int> = DataSource.broccoliImages,
+    val mushroomImages: List<Int> = DataSource.mushroomImages,
+    val onionImages: List<Int> = DataSource.onionImages,
+    val sausageImages: List<Int> = DataSource.sausageImages,
 ) {
     data class Ingredient(
         val id: Int,

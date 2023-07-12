@@ -1,9 +1,12 @@
 package com.devsadeq.pizzaorderapp.ui.screen
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,15 +30,18 @@ import com.devsadeq.pizzaorderapp.viewmodel.OrderScreenUiState
 import com.devsadeq.pizzaorderapp.viewmodel.OrderScreenViewModel
 import com.devsadeq.pizzaorderapp.viewmodel.PizzaSize
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun OrderScreen(viewModel: OrderScreenViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
+    val pagerState = rememberPagerState(initialPage = 1)
+    viewModel.setSelectedPizza(pagerState.settledPage)
     Scaffold(
         topBar = { OrderScreenTopBar(state.isFavorite, viewModel::onFavoriteClicked) },
     ) { paddingValues ->
         OrderScreenContent(
             state,
+            pagerState,
             paddingValues,
             viewModel::onPizzaSizeClicked,
             viewModel::onIngredientClicked
@@ -43,9 +49,11 @@ fun OrderScreen(viewModel: OrderScreenViewModel = hiltViewModel()) {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun OrderScreenContent(
     state: OrderScreenUiState,
+    pagerState: PagerState,
     paddingValues: PaddingValues,
     onPizzaSizeClicked: (PizzaSize) -> Unit,
     onIngredientClicked: (OrderScreenUiState.Ingredient) -> Unit,
@@ -56,7 +64,17 @@ private fun OrderScreenContent(
             .padding(paddingValues),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        PizzaPager(pizzaList = state.pizzaList, pizzaSize = state.selectedSize)
+        PizzaPager(
+            pagerState = pagerState,
+            pizzaList = state.pizzaList,
+            pizzaSize = state.selectedSize,
+            basilImages = state.basilImages,
+            broccoliImages = state.broccoliImages,
+            mushroomImages = state.mushroomImages,
+            onionImages = state.onionImages,
+            sausageImages = state.sausageImages,
+            selectedPizza = state.selectedPizza,
+        )
         PizzaPrice(price = state.totalPrice)
         PizzaSizeSelection(selectedSize = state.selectedSize, onClick = onPizzaSizeClicked)
         PizzaIngredients(ingredients = state.ingredients, onIngredientClicked = onIngredientClicked)
