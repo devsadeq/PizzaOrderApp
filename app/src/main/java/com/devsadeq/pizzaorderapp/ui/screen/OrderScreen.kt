@@ -22,7 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.devsadeq.pizzaorderapp.R
 import com.devsadeq.pizzaorderapp.ui.composable.OrderScreenTopBar
 import com.devsadeq.pizzaorderapp.ui.composable.PizzaIngredients
-import com.devsadeq.pizzaorderapp.ui.composable.PizzaPager
+import com.devsadeq.pizzaorderapp.ui.composable.Pizza
 import com.devsadeq.pizzaorderapp.ui.composable.PizzaPrice
 import com.devsadeq.pizzaorderapp.ui.composable.PizzaSizeSelection
 import com.devsadeq.pizzaorderapp.ui.composable.RoundedButton
@@ -35,7 +35,7 @@ import com.devsadeq.pizzaorderapp.viewmodel.PizzaSize
 fun OrderScreen(viewModel: OrderScreenViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
     val pagerState = rememberPagerState(initialPage = 1)
-    viewModel.setSelectedPizza(pagerState.settledPage)
+    viewModel.setSelectedPizza(pagerState.currentPage)
     Scaffold(
         topBar = { OrderScreenTopBar(state.isFavorite, viewModel::onFavoriteClicked) },
     ) { paddingValues ->
@@ -64,7 +64,7 @@ private fun OrderScreenContent(
             .padding(paddingValues),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        PizzaPager(
+        Pizza(
             pagerState = pagerState,
             pizzaList = state.pizzaList,
             pizzaSize = state.selectedSize,
