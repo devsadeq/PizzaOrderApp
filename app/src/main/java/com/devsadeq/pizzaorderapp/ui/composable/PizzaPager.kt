@@ -6,14 +6,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.devsadeq.pizzaorderapp.DataSource
 import com.devsadeq.pizzaorderapp.viewmodel.OrderScreenUiState
 import com.devsadeq.pizzaorderapp.viewmodel.PizzaSize
 
@@ -23,12 +20,6 @@ fun PizzaPager(
     pagerState: androidx.compose.foundation.pager.PagerState,
     pizzaList: List<OrderScreenUiState.Pizza>,
     pizzaSize: PizzaSize,
-    basilImages: List<Int>,
-    broccoliImages: List<Int>,
-    mushroomImages: List<Int>,
-    onionImages: List<Int>,
-    sausageImages: List<Int>,
-    selectedPizza: Int,
 ) {
     val scale = animateFloatAsState(
         targetValue = when (pizzaSize) {
@@ -52,66 +43,15 @@ fun PizzaPager(
                 imageRes = pizzaList[page].breadRes,
                 modifier = Modifier.align(Alignment.Center)
             )
-            pizzaList[selectedPizza].ingredients.forEach { ingredient ->
-                when (ingredient.id) {
-                    1 -> PizzaToppings(
-                        images = basilImages,
-                        id = 1,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .align(Alignment.Center)
-                    )
-
-                    2 -> PizzaToppings(
-                        images = broccoliImages,
-                        id = 2,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .align(Alignment.Center)
-                    )
-
-                    3 -> PizzaToppings(
-                        images = mushroomImages,
-                        id = 3,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .align(Alignment.Center)
-                    )
-
-                    4 -> PizzaToppings(
-                        images = onionImages,
-                        id = 4,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .align(Alignment.Center)
-                    )
-
-                    5 -> PizzaToppings(
-                        images = sausageImages,
-                        id = 5,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .align(Alignment.Center)
-                    )
-                }
+            pizzaList[page].ingredients.forEach { ingredient ->
+                if (ingredient.selected) PizzaToppings(
+                    images = ingredient.images,
+                    id = ingredient.id,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .align(Alignment.Center),
+                )
             }
         }
     }
-}
-
-@OptIn(ExperimentalFoundationApi::class)
-@Preview
-@Composable
-fun PizzaPagerPreview() {
-    PizzaPager(
-        pagerState = rememberPagerState(),
-        pizzaList = DataSource.pizzaList,
-        pizzaSize = PizzaSize.MEDIUM,
-        basilImages = DataSource.basilImages,
-        broccoliImages = emptyList(),
-        mushroomImages = emptyList(),
-        onionImages = emptyList(),
-        sausageImages = emptyList(),
-        selectedPizza = 0,
-    )
 }

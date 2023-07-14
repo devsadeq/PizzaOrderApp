@@ -20,12 +20,6 @@ fun Pizza(
     pizzaList: List<OrderScreenUiState.Pizza>,
     pizzaSize: PizzaSize,
     modifier: Modifier = Modifier,
-    basilImages: List<Int>,
-    broccoliImages: List<Int>,
-    mushroomImages: List<Int>,
-    onionImages: List<Int>,
-    sausageImages: List<Int>,
-    selectedPizza: Int,
 ) {
     Box(
         modifier = modifier
@@ -36,13 +30,7 @@ fun Pizza(
         PizzaPager(
             pagerState = pagerState,
             pizzaList = pizzaList,
-            basilImages = basilImages,
             pizzaSize = pizzaSize,
-            broccoliImages = broccoliImages,
-            mushroomImages = mushroomImages,
-            onionImages = onionImages,
-            sausageImages = sausageImages,
-            selectedPizza = selectedPizza
         )
     }
 }

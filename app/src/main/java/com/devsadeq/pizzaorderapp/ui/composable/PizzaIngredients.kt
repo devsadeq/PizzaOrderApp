@@ -18,9 +18,9 @@ import com.devsadeq.pizzaorderapp.viewmodel.OrderScreenUiState
 
 @Composable
 fun PizzaIngredients(
-    ingredients: List<OrderScreenUiState.Ingredient>,
     onIngredientClicked: (OrderScreenUiState.Ingredient) -> Unit,
     modifier: Modifier = Modifier,
+    pizza: OrderScreenUiState.Pizza
 ) {
     Column(
         modifier = modifier,
@@ -36,11 +36,11 @@ fun PizzaIngredients(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(16.dp)
         ) {
-            items(ingredients.size) { index ->
+            items(pizza.ingredients.size) { index ->
                 IngredientRoundedButton(
-                    imageRes = ingredients[index].imageRes,
-                    onClick = { onIngredientClicked(ingredients[index]) },
-                    selected = ingredients[index].selected,
+                    imageRes = pizza.ingredients[index].imageRes,
+                    onClick = { onIngredientClicked(pizza.ingredients[index]) },
+                    selected = pizza.ingredients[index].selected
                 )
             }
         }

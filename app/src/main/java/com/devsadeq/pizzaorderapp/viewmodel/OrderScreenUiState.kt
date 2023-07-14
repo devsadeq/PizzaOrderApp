@@ -4,23 +4,17 @@ import com.devsadeq.pizzaorderapp.DataSource
 
 data class OrderScreenUiState(
     val pizzaList: List<Pizza> = emptyList(),
-    val ingredients: List<Ingredient> = emptyList(),
     val selectedSize: PizzaSize = PizzaSize.MEDIUM,
-    val selectedIngredients: List<Ingredient> = emptyList(),
     val totalPrice: Double = 10.0,
     val isFavorite: Boolean = false,
-    val selectedPizza: Int = 1,
-    val basilImages: List<Int> = DataSource.basilImages,
-    val broccoliImages: List<Int> = DataSource.broccoliImages,
-    val mushroomImages: List<Int> = DataSource.mushroomImages,
-    val onionImages: List<Int> = DataSource.onionImages,
-    val sausageImages: List<Int> = DataSource.sausageImages,
+    val selectedPizza: Pizza = DataSource.pizzaList.first(),
 ) {
     data class Ingredient(
         val id: Int,
         val name: String,
         val price: Double,
         val imageRes: Int,
+        val images: List<Int> = emptyList(),
         val selected: Boolean = false,
     )
 

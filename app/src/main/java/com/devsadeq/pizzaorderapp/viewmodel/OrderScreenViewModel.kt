@@ -15,15 +15,10 @@ class OrderScreenViewModel @Inject constructor() : ViewModel() {
 
     init {
         getPizzaList()
-        getIngredientsList()
     }
 
     private fun getPizzaList() {
         _state.value = _state.value.copy(pizzaList = DataSource.pizzaList)
-    }
-
-    private fun getIngredientsList() {
-        _state.value = _state.value.copy(ingredients = DataSource.ingredientsList)
     }
 
     fun onFavoriteClicked() {
@@ -36,25 +31,21 @@ class OrderScreenViewModel @Inject constructor() : ViewModel() {
 
     fun onIngredientClicked(ingredient: OrderScreenUiState.Ingredient) {
         _state.update { state ->
-            val updatedIngredients = state.ingredients.map { item ->
-                if (item.id == ingredient.id) item.copy(selected = !item.selected) else item
-            }
-            val selectedIngredients = updatedIngredients.filter { it.selected }
-            updatePizzaIngredients(selectedIngredients)
-            state.copy(ingredients = updatedIngredients, selectedIngredients = selectedIngredients)
-        }
-    }
-
-    private fun updatePizzaIngredients(selectedIngredients: List<OrderScreenUiState.Ingredient>) {
-        _state.update { state ->
-            val updatedPizzaList = state.pizzaList.map { pizza ->
-                if (pizza.id == state.selectedPizza) pizza.copy(ingredients = selectedIngredients) else pizza
-            }
-            state.copy(pizzaList = updatedPizzaList)
+            state.copy(
+                pizzaList = state.pizzaList.map { pizza ->
+                    if (pizza.id == state.selectedPizza.id) {
+                        pizza.copy(
+                            ingredients = pizza.ingredients.map { item ->
+                                if (item.id == ingredient.id) item.copy(selected = !item.selected) else item
+                            }
+                        )
+                    } else pizza
+                }
+            )
         }
     }
 
     fun setSelectedPizza(page: Int) {
-        _state.value = _state.value.copy(selectedPizza = page)
+        _state.value = _state.value.copy(selectedPizza = _state.value.pizzaList[page])
     }
 }

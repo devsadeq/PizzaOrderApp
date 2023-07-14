@@ -34,8 +34,8 @@ import com.devsadeq.pizzaorderapp.viewmodel.PizzaSize
 @Composable
 fun OrderScreen(viewModel: OrderScreenViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
-    val pagerState = rememberPagerState(initialPage = 1)
-    viewModel.setSelectedPizza(pagerState.currentPage)
+    val pagerState = rememberPagerState(initialPage = 0)
+    viewModel.setSelectedPizza(pagerState.settledPage)
     Scaffold(
         topBar = { OrderScreenTopBar(state.isFavorite, viewModel::onFavoriteClicked) },
     ) { paddingValues ->
@@ -68,16 +68,13 @@ private fun OrderScreenContent(
             pagerState = pagerState,
             pizzaList = state.pizzaList,
             pizzaSize = state.selectedSize,
-            basilImages = state.basilImages,
-            broccoliImages = state.broccoliImages,
-            mushroomImages = state.mushroomImages,
-            onionImages = state.onionImages,
-            sausageImages = state.sausageImages,
-            selectedPizza = state.selectedPizza,
         )
         PizzaPrice(price = state.totalPrice)
         PizzaSizeSelection(selectedSize = state.selectedSize, onClick = onPizzaSizeClicked)
-        PizzaIngredients(ingredients = state.ingredients, onIngredientClicked = onIngredientClicked)
+        PizzaIngredients(
+            pizza = state.selectedPizza,
+            onIngredientClicked = onIngredientClicked,
+        )
         RoundedButton(
             label = stringResource(R.string.add_to_cart),
             icon = Icons.Filled.ShoppingCart,
