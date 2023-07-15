@@ -3,7 +3,6 @@ package com.devsadeq.pizzaorderapp.ui.composable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.runtime.Composable
@@ -44,12 +43,32 @@ fun PizzaPager(
                 modifier = Modifier.align(Alignment.Center)
             )
             pizzaList[page].ingredients.forEach { ingredient ->
-                if (ingredient.selected) PizzaToppings(
-                    images = ingredient.images,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .align(Alignment.Center),
-                )
+                when (ingredient.id) {
+                    1 -> if (ingredient.selected) PizzaToppings(
+                        images = ingredient.images,
+                        modifier = Modifier.align(Alignment.Center),
+                    )
+
+                    2 -> if (ingredient.selected) PizzaToppings(
+                        images = ingredient.images,
+                        modifier = Modifier.align(Alignment.Center),
+                    )
+
+                    3 -> if (ingredient.selected) PizzaToppings(
+                        images = ingredient.images,
+                        modifier = Modifier.align(Alignment.Center),
+                    )
+
+                    4 -> if (ingredient.selected) PizzaToppings(
+                        images = ingredient.images,
+                        modifier = Modifier.align(Alignment.Center),
+                    )
+
+                    5 -> if (ingredient.selected) PizzaToppings(
+                        images = ingredient.images,
+                        modifier = Modifier.align(Alignment.Center),
+                    )
+                }
             }
         }
     }
