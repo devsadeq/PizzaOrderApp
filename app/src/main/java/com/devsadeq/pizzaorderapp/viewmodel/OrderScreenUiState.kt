@@ -9,6 +9,14 @@ data class OrderScreenUiState(
     val isFavorite: Boolean = false,
     val selectedPizza: Pizza = DataSource.pizzaList.first(),
 ) {
+    data class Pizza(
+        val id: Int,
+        val name: String,
+        val price: Double,
+        val breadRes: Int,
+        val ingredients: List<Ingredient> = emptyList(),
+    )
+
     data class Ingredient(
         val id: Int,
         val name: String,
@@ -16,14 +24,6 @@ data class OrderScreenUiState(
         val imageRes: Int,
         val images: List<Int> = emptyList(),
         val selected: Boolean = false,
-    )
-
-    data class Pizza(
-        val id: Int,
-        val name: String,
-        val price: Double,
-        val breadRes: Int,
-        val ingredients: List<Ingredient> = emptyList(),
     )
 }
 

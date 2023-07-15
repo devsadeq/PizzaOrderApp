@@ -18,9 +18,9 @@ import com.devsadeq.pizzaorderapp.viewmodel.OrderScreenUiState
 
 @Composable
 fun PizzaIngredients(
+    pizza: OrderScreenUiState.Pizza,
     onIngredientClicked: (OrderScreenUiState.Ingredient) -> Unit,
     modifier: Modifier = Modifier,
-    pizza: OrderScreenUiState.Pizza
 ) {
     Column(
         modifier = modifier,
