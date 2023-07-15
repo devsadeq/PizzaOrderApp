@@ -46,7 +46,6 @@ fun PizzaPager(
             pizzaList[page].ingredients.forEach { ingredient ->
                 if (ingredient.selected) PizzaToppings(
                     images = ingredient.images,
-                    id = ingredient.id,
                     modifier = Modifier
                         .fillMaxSize()
                         .align(Alignment.Center),
