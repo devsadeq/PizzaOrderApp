@@ -22,9 +22,9 @@ fun PizzaPager(
 ) {
     val scale = animateFloatAsState(
         targetValue = when (pizzaSize) {
-            PizzaSize.SMALL -> 0.9f
-            PizzaSize.MEDIUM -> 1.0f
-            PizzaSize.LARGE -> 1.1f
+            PizzaSize.SMALL -> 0.7f
+            PizzaSize.MEDIUM -> 0.8f
+            PizzaSize.LARGE -> 0.9f
         }, label = "pizzaScale"
     )
 
