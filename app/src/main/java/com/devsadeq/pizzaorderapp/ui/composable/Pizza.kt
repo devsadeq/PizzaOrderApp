@@ -1,6 +1,7 @@
 package com.devsadeq.pizzaorderapp.ui.composable
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -11,6 +12,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -28,8 +30,10 @@ fun Pizza(
     modifier: Modifier = Modifier,
 ) {
     Box(modifier = modifier.padding(vertical = 24.dp)) {
-        PizzaImage(
-            R.drawable.plate, modifier = Modifier
+        Image(
+            painter = painterResource(R.drawable.plate),
+            contentDescription = null,
+            modifier = Modifier
                 .align(Alignment.Center)
                 .size(300.dp)
         )
