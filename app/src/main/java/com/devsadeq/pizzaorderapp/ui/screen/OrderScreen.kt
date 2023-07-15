@@ -3,6 +3,7 @@ package com.devsadeq.pizzaorderapp.ui.screen
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.PagerState
@@ -71,14 +72,17 @@ private fun OrderScreenContent(
         )
         PizzaPrice(price = state.totalPrice)
         PizzaSizeSelection(selectedSize = state.selectedSize, onClick = onPizzaSizeClicked)
+        Spacer(modifier = Modifier.weight(1f))
         PizzaIngredients(
             pizza = state.selectedPizza,
             onIngredientClicked = onIngredientClicked,
         )
+        Spacer(modifier = Modifier.weight(1f))
         RoundedButton(
             label = stringResource(R.string.add_to_cart),
             icon = Icons.Filled.ShoppingCart,
             onClick = { })
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 

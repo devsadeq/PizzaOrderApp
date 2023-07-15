@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun RoundedButton(
@@ -38,18 +39,18 @@ fun RoundedButton(
         Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+            modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
                 modifier = Modifier
                     .padding(end = 8.dp)
-                    .size(18.dp)
+                    .size(24.dp)
             )
             Text(
                 text = label,
-                style = MaterialTheme.typography.titleMedium,
+                fontSize = 18.sp,
             )
         }
     }

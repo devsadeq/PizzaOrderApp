@@ -19,6 +19,7 @@ fun PizzaPager(
     pagerState: androidx.compose.foundation.pager.PagerState,
     pizzaList: List<OrderScreenUiState.Pizza>,
     pizzaSize: PizzaSize,
+    modifier: Modifier = Modifier,
 ) {
     val scale = animateFloatAsState(
         targetValue = when (pizzaSize) {
@@ -32,10 +33,11 @@ fun PizzaPager(
         pageCount = pizzaList.size,
         state = pagerState,
         verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier,
     ) { page ->
         Box(
             modifier = Modifier
-                .size(250.dp)
+                .size(300.dp)
                 .scale(scale.value),
         ) {
             PizzaImage(

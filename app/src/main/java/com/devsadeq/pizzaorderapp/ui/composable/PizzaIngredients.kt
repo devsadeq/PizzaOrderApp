@@ -32,7 +32,7 @@ fun PizzaIngredients(
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         LazyRow(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(16.dp)
         ) {

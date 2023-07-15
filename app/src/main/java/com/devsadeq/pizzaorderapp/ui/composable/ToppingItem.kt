@@ -15,6 +15,6 @@ fun ToppingItem(
 ) {
     Image(
         painterResource(imageRes), contentDescription = null,
-        modifier = modifier.size(25.dp)
+        modifier = modifier.size(30.dp)
     )
 }
