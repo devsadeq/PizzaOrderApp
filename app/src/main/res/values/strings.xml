@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">PizzaOrderApp</string>
+    <string name="pizza">Pizza</string>
+    <string name="back">Back</string>
+    <string name="favorite">Favorite</string>
+    <string name="order_screen_title">Pizza</string>
+    <string name="s">S</string>
+    <string name="m">M</string>
+    <string name="l">L</string>
+    <string name="customize_your_pizza">Customize your pizza</string>
+    <string name="add_to_cart">Add to cart</string>
 </resources>
