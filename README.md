@@ -11,8 +11,8 @@ This is a simple pizza order app built using Jetpack Compose, designed to demons
 ## Screenshots
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/devsadeq/PizzaOrderApp/assets/64174395/a72aeb4e-078f-40a7-bfeb-58b1288ad19e" alt="Screenshot 1" width="45%">
-  <img src="https://github.com/devsadeq/PizzaOrderApp/assets/64174395/b38f0086-5c12-4c10-8135-89eebf352f0e" alt="Screenshot 2" width="45%">
+  <img src="https://github.com/devsadeq/PizzaOrderApp/assets/64174395/b6252ce3-217c-4ec2-90cb-029f327998a4" alt="Screenshot 1" width="45%">
+  <img src="https://github.com/devsadeq/PizzaOrderApp/assets/64174395/08dd74a6-7fef-47ac-b10c-043a199dfac2" alt="Screenshot 2" width="45%">
 </div>
 
 ## Demo
